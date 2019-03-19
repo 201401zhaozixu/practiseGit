@@ -1,0 +1,13 @@
+{
+    "status": "0",
+    "msg": "ok",
+    "result": {
+        "from": "CNY",
+        "to": "USD",
+        "fromname": "人民币",
+        "toname": "美元",
+        "updatetime": "2015-10-26 16:56:22",
+        "rate": "0.1574",
+        "camount": "1.574"
+    }
+}

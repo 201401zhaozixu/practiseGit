@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<body>
+    <div id="form-div">
+        
+            <p>请输入要兑换的货币数额：<input id="cammount" type="number"/></p>
+            <span>原始货币：</span>
+            <select id="primon">
+                <option value="CNY">人民币</option>
+                <option value="EUR">欧元</option>
+                <option value="USD">美元</option>
+            </select><br/>
+            <span>目标货币：</span>
+            <select id="goalmoney">
+                <option value="EUR">欧元</option>
+                <option value="USD">美元</option>
+                <option value="CNY">人民币</option>
+            </select>
+            <p><input type="submit" id="arith" onclick="arithmatic()" value="查询汇率 开始计算"></p>
+       
+        
+    </div>
+
+</body>
+<script type="text/javascript">
+    
+    function arithmatic(){
+        var afrom = $("#primon option:selected").val();
+        var ato = $("#goalmoney option:selected").val();
+        var aamount = $("#cammount").val();
+        console.log(afrom,ato,aamount);
+        // $.ajax({
+        //     type:"get",//方法类型
+        //     datatype:"jsonp",
+        //     //url:" http://api.jisuapi.com/exchange/currency?appkey=f1f696a44f7d3e2b"+"&from="+afrom+"&to+"+ato+"&amount="+aamount,
+        //     url:"filerate.json",
+        //     data:{},
+        //     success:function(res){console.log(res)},
+        //     error:function(){alert("异常")}
+        // });
+        //步骤一:创建异步对象
+var ajax = new XMLHttpRequest();
+//步骤二:设置请求的url参数,参数一是请求的类型,参数二是请求的url,可以带参数,动态的传递参数starName到服务端
+ajax.open('get','C:/Users/Administrator/Desktop/htmlcode/rate.json');
+//步骤三:发送请求
+ajax.send();
+//步骤四:注册事件 onreadystatechange 状态改变就会调用
+ajax.onreadystatechange = function () {
+   if (ajax.readyState==4 &&ajax.status==200) {
+    //步骤五 如果能够进到这个判断 说明 数据 完美的回来了,并且请求的页面是存在的
+　　　　console.log(ajax.responseText);//输入相应的内容
+  　　}
+}
+    }
+</script>
+</html>
